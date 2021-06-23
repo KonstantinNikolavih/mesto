@@ -1,0 +1,12 @@
+.elements__item {
+  width: 282px;
+  min-height: 361px;
+  border-radius: 10px;
+  background-color: #fff;
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

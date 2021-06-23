@@ -1,0 +1,9 @@
+.elements__line {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  column-gap: 30px;
+  align-content: space-between;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
