@@ -1,0 +1,8 @@
+.nav_card {
+  display: flex;
+  transition: all 0.3s;
+  opacity: 0.1;
+}
+.nav_card:hover {
+  opacity: 1.0;
+ }
