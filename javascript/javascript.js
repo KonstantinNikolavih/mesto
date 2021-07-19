@@ -76,3 +76,10 @@ const closePopupCard = document.querySelector('.popup__close-card-nov');
 closePopupCard.addEventListener('click', function() {
     popupCard.classList.remove('nav_card');
 })
+
+// template переменые
+const photoTemplate = document.querySelector('.item_template').content;
+const photoList = document.querySelector('.elements__list');
+
+// добовление масива с карточками
+initialCards.a
