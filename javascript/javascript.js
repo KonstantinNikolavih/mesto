@@ -44,7 +44,7 @@ const nameInput = document.querySelector('.profile__name');
 const jobInput = document.querySelector('.profile__occupation');
 const nameInpu = document.querySelector('.popup__item_name');
 const jobInpu = document.querySelector('.popup__item_occupation');
-// сохранение редактированого профиля
+// кнопка пременой для сохранение редактированого профиля
 const save = document.querySelector('.popup__button-save');
 
 save.addEventListener('click', function() {
@@ -52,15 +52,16 @@ save.addEventListener('click', function() {
 })
 
 // fuction имя функции (параметры) {инструкции}
-function formSubmitHandler (evt) {
+function formProfil (evt) {
   evt.preventDefault();
+  // соединяем popup c section profil для созранения изменений
   nameInput.textContent = nameInpu.value;
   jobInput.textContent = jobInpu.value;
 
   popup.classList.toggle('popup_opened');
 
 }
-  formElement.addEventListener('submit', formSubmitHandler);
+  formElement.addEventListener('submit', formProfil);
 
 // 2 popup добавление карточки
 
@@ -80,6 +81,15 @@ closePopupCard.addEventListener('click', function() {
 // template переменые
 const photoTemplate = document.querySelector('.item_template').content;
 const photoList = document.querySelector('.elements__list');
+const elementsCar = document.querySelector('.elements');
 
 // добовление масива с карточками
-initialCards.a
+function initialCard(card) {
+  elementsCar.append(card);
+}
+
+initialCards.cardMas(function (item) {
+initialCard(cards(item));
+});
+
+// popup карточки
