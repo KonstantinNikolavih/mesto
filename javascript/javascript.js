@@ -83,6 +83,23 @@ const photoTemplate = document.querySelector('.item_template').content;
 const photoList = document.querySelector('.elements__list');
 const elementsCar = document.querySelector('.elements');
 
+
+
+// popup карточки
+// переменая для функции карточек с клонированием
+function cards(imgCard) {
+const elementCard = photoTemplate.querySelector('.elements__item').cloneNode(true);
+const img = imgCard.link;
+const name = imgCard.name;
+/* const cardImage = photoTemplate.querySelector('.elements__img');
+const elementsTitle = elementImg.querySelector('.elements__title'); */
+elementCard.querySelector('.elements__img').setAttribute('src', img);
+elementCard.querySelector('.elements__title').textContent = name;
+
+};
+
+
+
 // добовление масива с карточками
 function initialCard(card) {
   elementsCar.append(card);
@@ -91,5 +108,11 @@ function initialCard(card) {
 initialCards.cardMas(function (item) {
 initialCard(cards(item));
 });
-
-// popup карточки
+// переменые popup card img
+const openPopupCardImg = document.querySelector('.elements__img_card');
+const popupCardImg = document.querySelector('.popup__card_width');
+const popupCloseCardImg = document.querySelector('.popup__close-card-img');
+// закрытие popup card img
+popupCloseCardImg.addEventListener('click', function() {
+  popupCardImg.classList.remove('popup_img');
+})

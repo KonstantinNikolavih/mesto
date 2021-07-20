@@ -1,0 +1,4 @@
+.popup_img {
+  display: flex;
+  transition: all 1s ease-in;
+}
