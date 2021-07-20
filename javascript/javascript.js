@@ -115,4 +115,24 @@ const popupCloseCardImg = document.querySelector('.popup__close-card-img');
 // закрытие popup card img
 popupCloseCardImg.addEventListener('click', function() {
   popupCardImg.classList.remove('popup_img');
-})
+});
+
+
+
+
+
+// удаления card
+function deleteCard (evt) {
+  evt.target.closest('.elements__item').remove();
+}
+function deleteCardListeners(element) {
+  element.querySelector('.elements__dele').addEventListener('click', deleteCard);
+}
+
+// лайк card
+function likeCard (evt) {
+  evt.target.classList.toggle('elements__group_active');
+}
+function likeCardListeners(element) {
+  element.querySelector('.elements__group').addEventListener('click', likeCard);
+}
