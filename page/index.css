@@ -21,8 +21,8 @@
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/elements/__img_card/elements__img_card.css);
 @import url(../blocks/elements/__dele/elements__dele.css);
-@import url(../blocks/elements/__group/_active/elements__group_active.css);
 @import url(../blocks/elements/__group/elements__group.css);
+@import url(../blocks/elements/__group/_active/elements__group_active.css);
 @import url(../blocks/elements/__img/elements__img.css);
 @import url(../blocks/elements/__item/elements__item.css);
 @import url(../blocks/elements/__line/elements__line.css);
