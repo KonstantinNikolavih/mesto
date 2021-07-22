@@ -1,0 +1,13 @@
+.elements__dele {
+  width: 18px;
+  height: 19px;
+  background-image: url(../../../images/dele.svg);
+  background-color: rgba(0, 0, 0, 0);
+  position: absolute;
+  border: 0;
+  padding: 0;
+  margin: 18px 0 0 239px;
+ }
+ .elements__dele:hover {
+  opacity: 0.6;
+ }

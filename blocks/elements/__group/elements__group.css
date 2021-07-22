@@ -14,7 +14,3 @@
 .elements__group:hover {
   opacity: 0.5;
 }
-.elements__group:active {
-  background-image: url(../../../images/Union.svg);
-  color: black;
-}
