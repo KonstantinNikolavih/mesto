@@ -79,10 +79,7 @@ openPopupCard.addEventListener('click', function() {
 closePopupCard.addEventListener('click', function() {
   popupCard.classList.remove('nav_card');
 })
-// function открытие img card
-function openImgPol2(popupCard1) {
-  popupCard1.classList.add('popup__card_width')
-}
+
 // function закрытия popup добовление карточки
 function openPopupCardImgl(popupCard) {
   popupCard.classList.remove('nav_card')
@@ -99,6 +96,15 @@ const elementsTitleCard = document.querySelector('.elements__title_card');
 openPopupCardImg.addEventListener('click', function() {
   popupCardImg.classList.add('popup_img');
 })
+// закрытие 3 popup
+popupCloseCardImg.addEventListener('click', function() {
+  popupCardImg.classList.remove('popup_img');
+})
+// function открытие img card
+function openImgPol2(popupCard1) {
+  popupCard1.classList.add('popup_img')
+}
+
 // добовление перемены с карточкими
 const popupInputCard = document.querySelector('.popup__input_card');
 const popupItemCardName = document.querySelector('.popup__item-card-name');
@@ -122,8 +128,8 @@ elementsGroup.addEventListener('click', function() {
 });
 // соединяем функции popup card и template // открытие card img
 elementsImg.addEventListener('click', function() {
-  popupCloseCardImg.src = elementsImg.src
-  popupCloseCardImg.alt = elementsTitle.textContent
+  openPopupCardImg.src = elementsImg.src
+  openPopupCardImg.alt = elementsTitle.textContent
   elementsTitleCard.textContent = elementsTitle.textContent
   openImgPol2(popupCardImg)
 

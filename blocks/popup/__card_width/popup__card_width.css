@@ -1,4 +1,5 @@
 .popup__card_width {
-  max-width: 750px;
-  max-height: 800px;
+  width: 75vw;
+  height: 75vh;
+  transition: all ,5s ease-in;
 }
