@@ -79,21 +79,42 @@ const popupEditProfileClose = popupPofile.querySelector('.popup__close'); */
 
 const openPopupCard = document.querySelector('.profile__button-add');
 const popupCard = document.querySelector('.popup-card-nov');
-const closePopupCard = document.querySelector('.popup__close-card-nov');
+const closePopupCard = popupCard.querySelector('.popup__close');
 
 // открытие popup
-openPopupCard.addEventListener('click', function() {
-  popupCard.classList.add('nav_card');
+/* openPopupCard.addEventListener('click', function() {
+  popupCard.classList.add('popup_opened');
 })
 // закрытие popup
 closePopupCard.addEventListener('click', function() {
-  popupCard.classList.remove('nav_card');
-})
+  popupCard.classList.remove('popup_opened');
+}) */
 
+
+
+// открытие
+/* popupEditProfile.addEventListener('click', function() {
+  openPopup(popupPofile)
+})
+// закрытие
+popupEditProfileClose.addEventListener('click', function() {
+ closePopup(popupPofile)
+}) */
+
+
+
+// открытие
+openPopupCard.addEventListener('click', function() {
+  openPopup(popupCard)
+})
+// закрытие
+closePopupCard.addEventListener('click', function() {
+  closePopup(popupCard)
+})
 // function закрытия popup добовление карточки
-function openPopupCardImgl(popupCard) {
+/* function openPopupCardImgl(popupCard) {
   popupCard.classList.remove('nav_card')
-}
+} */
 // переменые popup card img
 const photoList = document.querySelector('.elements__list');
 /* const openImgP = document.querySelector('.popup_cards'); */
