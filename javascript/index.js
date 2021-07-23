@@ -91,7 +91,7 @@ function popupCardImgLink(popupCard) {
 }
 
 // переменые popup card img
-const photoList = document.querySelector('.elements__list');
+const elementList = document.querySelector('.elements__list');
 /* const openImgP = document.querySelector('.popup_cards'); */
 const openPopupCardImg = document.querySelector('.elements__img_card');
 const popupCardImg = document.querySelector('.popup__card_img');
@@ -112,26 +112,26 @@ closePopupCardImg.addEventListener('click', function() {
 // добовление перемены с карточкими
 const popupInputCard = document.querySelector('.popup__input_card');
 const popupItemCardName = document.querySelector('.popup__item-card-name');
-const popupItemCardOccupation = document.querySelector('.popup__item-card-occupation');
+const popupItemCardJob = document.querySelector('.popup__item-card-occupation');
 // обшие переменые для функции добовления карточки
   function parametrCard(card) {
 // template карточки
-const photoTemplate = document.querySelector('.item_template').content;
-const cardElement = photoTemplate.querySelector('.elements__item').cloneNode(true);
+const photoTemplat = document.querySelector('.item_template').content;
+const cardElement = photoTemplat.querySelector('.elements__item').cloneNode(true);
 const elementsImg = cardElement.querySelector('.elements__img');
-const elementsTitle = cardElement.querySelector('.elements__title');
+const elementsTitl = cardElement.querySelector('.elements__title');
 const elementsGroup = cardElement.querySelector('.elements__group');
 
 
   elementsImg.setAttribute('src', card.link);
   elementsImg.setAttribute('alt', card.name);
-  elementsTitle.textContent = card.name;
+  elementsTitl.textContent = card.name;
 
 // соединяем функции popup card и template // открытие card img
 elementsImg.addEventListener('click', function() {
   openPopupCardImg.src = elementsImg.src
-  openPopupCardImg.alt = elementsTitle.textContent
-  elementsTitleCard.textContent = elementsTitle.textContent
+  openPopupCardImg.alt = elementsTitl.textContent
+  elementsTitleCard.textContent = elementsTitl.textContent
   openImgPol2(popupCardImg)
 
 });
@@ -158,7 +158,7 @@ return cardElement
 }
 function addCards(cardLos) {
   const card = parametrCard(cardLos);
-  photoList.prepend(card);
+  elementList.prepend(card);
 }
 
 // form для добавления карты и сброс карты и закрытие popup
@@ -166,7 +166,7 @@ popupInputCard.addEventListener('submit', function (evt) {
   evt.preventDefault()
   addCards({
   name: popupItemCardName.value,
-  link: popupItemCardOccupation.value
+  link: popupItemCardJob.value
 })
 
   popupInputCard.reset()
