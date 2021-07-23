@@ -1,4 +1,6 @@
 .popup_img {
   display: flex;
   transition: all 1s ease-in;
+  visibility: visible;
+  opacity: 1;
 }

@@ -24,6 +24,19 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+// function открытие popup
+/* function openPopup(popup) {
+  popup.classList.add("popup_opened");
+ }
+// function закрытие popup
+function closePopup(popup) {
+  popup.classList.remove("popup_opened");
+ } */
+ // открытие попап
+/*  openPopupProfil.addEventListener('click', function () {
+   openPopup(openPopupProfil);
+ }) */
+
 // 1 popup profile
 // создаём переменые
 const openPopup = document.querySelector('.profile__button-edit');
@@ -35,18 +48,18 @@ openPopup.addEventListener('click', function() {
   popup.classList.add('popup_opened');
 })
 
-/* console.log(popup) */
 
 closePopup.addEventListener('click', function() {
   popup.classList.remove('popup_opened');
 })
 
+
 // создаём переменые //тест формы для сохрпанения
 const formElement = document.querySelector('.popup__input');
-const nameInput = document.querySelector('.profile__name');
-const jobInput = document.querySelector('.profile__occupation');
-const nameInpu = document.querySelector('.popup__item_name');
-const jobInpu = document.querySelector('.popup__item_occupation');
+const profileNameElement = document.querySelector('.profile__name');
+const profileJobElement = document.querySelector('.profile__occupation');
+const nameInput = document.querySelector('.popup__item_name');
+const jobInput = document.querySelector('.popup__item_occupation');
 // кнопка пременой для сохранение редактированого профиля
 const save = document.querySelector('.popup__button-save');
 
@@ -57,8 +70,8 @@ save.addEventListener('click', function() {
 function formProfil (evt) {
   evt.preventDefault();
   // соединяем popup c section profil для созранения изменений
-  nameInput.textContent = nameInpu.value;
-  jobInput.textContent = jobInpu.value;
+  profileNameElement.textContent = nameInput.value;
+  profileJobElement.textContent = jobInput.value;
 
   popup.classList.toggle('popup_opened');
 
