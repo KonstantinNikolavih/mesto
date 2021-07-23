@@ -72,76 +72,49 @@ function formProfil (evt) {
   formElement.addEventListener('submit', formProfil);
 
 // 2 popup добавление карточки
-
-/* const popupPofile = document.querySelector('.popup_pofil');
-const popupEditProfile = document.querySelector('.profile__button-edit');
-const popupEditProfileClose = popupPofile.querySelector('.popup__close'); */
-
 const openPopupCard = document.querySelector('.profile__button-add');
 const popupCard = document.querySelector('.popup-card-nov');
 const closePopupCard = popupCard.querySelector('.popup__close');
 
-// открытие popup
-/* openPopupCard.addEventListener('click', function() {
-  popupCard.classList.add('popup_opened');
-})
-// закрытие popup
-closePopupCard.addEventListener('click', function() {
-  popupCard.classList.remove('popup_opened');
-}) */
 
-
-
-// открытие
-/* popupEditProfile.addEventListener('click', function() {
-  openPopup(popupPofile)
-})
-// закрытие
-popupEditProfileClose.addEventListener('click', function() {
- closePopup(popupPofile)
-}) */
-
-
-
-// открытие
+// открытие popup 2
 openPopupCard.addEventListener('click', function() {
   openPopup(popupCard)
 })
-// закрытие
+// закрытие popup 2
 closePopupCard.addEventListener('click', function() {
   closePopup(popupCard)
 })
 // function закрытия popup добовление карточки
-/* function openPopupCardImgl(popupCard) {
-  popupCard.classList.remove('nav_card')
-} */
+function popupCardImgLink(popupCard) {
+  popupCard.classList.remove('popup_opened')
+}
+
 // переменые popup card img
 const photoList = document.querySelector('.elements__list');
 /* const openImgP = document.querySelector('.popup_cards'); */
 const openPopupCardImg = document.querySelector('.elements__img_card');
-const popupCardImg = document.querySelector('.popup__card_width');
-const popupCloseCardImg = document.querySelector('.popup__close-card-img');
+const popupCardImg = document.querySelector('.popup__card_img');
+const closePopupCardImg = popupCardImg.querySelector('.popup__close');
 // переменые popup card img // cart title
 const elementsTitleCard = document.querySelector('.elements__title_card');
+
 // открытие 3 popup с большой картинкой
-openPopupCardImg.addEventListener('click', function() {
-  popupCardImg.classList.add('popup_img');
-})
-// закрытие 3 popup
-popupCloseCardImg.addEventListener('click', function() {
-  popupCardImg.classList.remove('popup_img');
-})
-// function открытие img card
 function openImgPol2(popupCard1) {
-  popupCard1.classList.add('popup_img')
+  popupCard1.classList.add('popup_opened')
 }
+
+// закрытие 3 popup
+closePopupCardImg.addEventListener('click', function() {
+  closePopup(popupCardImg)
+})
 
 // добовление перемены с карточкими
 const popupInputCard = document.querySelector('.popup__input_card');
 const popupItemCardName = document.querySelector('.popup__item-card-name');
 const popupItemCardOccupation = document.querySelector('.popup__item-card-occupation');
 // обшие переменые для функции добовления карточки
-  function parametrCard(cards) {
+  function parametrCard(card) {
 // template карточки
 const photoTemplate = document.querySelector('.item_template').content;
 const cardElement = photoTemplate.querySelector('.elements__item').cloneNode(true);
@@ -150,9 +123,9 @@ const elementsTitle = cardElement.querySelector('.elements__title');
 const elementsGroup = cardElement.querySelector('.elements__group');
 
 
-  elementsImg.setAttribute('src', cards.link);
-  elementsImg.setAttribute('alt', cards.name);
-  elementsTitle.textContent = cards.name;
+  elementsImg.setAttribute('src', card.link);
+  elementsImg.setAttribute('alt', card.name);
+  elementsTitle.textContent = card.name;
 
 // соединяем функции popup card и template // открытие card img
 elementsImg.addEventListener('click', function() {
@@ -184,8 +157,8 @@ function deleteCardListeners(element) {
 return cardElement
 }
 function addCards(cardLos) {
-  const cards = parametrCard(cardLos);
-  photoList.prepend(cards);
+  const card = parametrCard(cardLos);
+  photoList.prepend(card);
 }
 
 // form для добавления карты и сброс карты и закрытие popup
@@ -197,11 +170,11 @@ popupInputCard.addEventListener('submit', function (evt) {
 })
 
   popupInputCard.reset()
-  openPopupCardImgl(popupCard)
+  popupCardImgLink(popupCard)
 });
 // добовления карточек из массива
 const arrayCards = function() {
-  initialCards.forEach (cards => addCards(cards))
+  initialCards.forEach (card => addCards(card))
 }
 // вызов из массива
 arrayCards()

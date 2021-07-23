@@ -1,6 +1,6 @@
 .popup__close {
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   background-image: url(../../../images/Close\ Icon.svg);
   background-color: rgba(0, 0, 0, 0);
   background-size: contain;
@@ -9,10 +9,10 @@
   background-repeat: repeat-x;
   position: absolute;
   top: -40px;
-  left: 418px;
+  right: -40px;
   display: flex;
   cursor: pointer;
-  transition: opacity 0,5s ease-in;
+  transition: all .5s ease-in;
   border: 0;
   padding: 0;
  }
@@ -22,16 +22,16 @@
 
 @media screen and (max-width: 650px) {
   .popup__close {
-    width: 26px;
-    height: 26px;
-    top: -42px;
-    left: 405px;
+    width: 20px;
+    height: 20px;
+    top: -25px;
+    right: -25px;
     background-size: revert;
   }
 }
 @media screen and (max-width: 450px) {
   .popup__close {
-    top: -12%;
-    left: 88%;
+    top: -11%;
+    right: 0%;
   }
 }
