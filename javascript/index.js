@@ -135,10 +135,7 @@ const elementsGroup = cardElement.querySelector('.elements__group');
   elementsImg.setAttribute('src', cards.link);
   elementsImg.setAttribute('alt', cards.name);
   elementsTitle.textContent = cards.name;
-// лайк для карточек
-elementsGroup.addEventListener('click', function() {
-  elementsGroup.classList.toggle('elements__group_active')
-});
+
 // соединяем функции popup card и template // открытие card img
 elementsImg.addEventListener('click', function() {
   openPopupCardImg.src = elementsImg.src
@@ -147,6 +144,15 @@ elementsImg.addEventListener('click', function() {
   openImgPol2(popupCardImg)
 
 });
+// вызов лайка
+likeCardListeners(cardElement)
+// функция лайк карточки
+function likeCard (evt) {
+  evt.target.classList.toggle('elements__group_active');
+}
+function likeCardListeners(element) {
+  element.querySelector('.elements__group').addEventListener('click', likeCard);
+};
 // удаление карточек
 deleteCardListeners(cardElement);
 // fuction удаления карточки
