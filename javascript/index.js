@@ -24,35 +24,29 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+
+// 1 popup profile
+// создаём переменые
+const popupPofile = document.querySelector('.popup_pofil');
+const popupEditProfile = document.querySelector('.profile__button-edit');
+const popupEditProfileClose = popupPofile.querySelector('.popup__close');
+
 // function открытие popup
-/* function openPopup(popup) {
+ function openPopup(popup) {
   popup.classList.add("popup_opened");
  }
 // function закрытие popup
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
- } */
- // открытие попап
-/*  openPopupProfil.addEventListener('click', function () {
-   openPopup(openPopupProfil);
- }) */
-
-// 1 popup profile
-// создаём переменые
-const openPopup = document.querySelector('.profile__button-edit');
-const popup = document.querySelector('.popup');
-const closePopup = document.querySelector('.popup__close');
-
-// переменная.команда(событие) функция перехвата команды
-openPopup.addEventListener('click', function() {
-  popup.classList.add('popup_opened');
+ }
+ // открытие
+ popupEditProfile.addEventListener('click', function() {
+   openPopup(popupPofile)
+ })
+// закрытие
+popupEditProfileClose.addEventListener('click', function() {
+  closePopup(popupPofile)
 })
-
-
-closePopup.addEventListener('click', function() {
-  popup.classList.remove('popup_opened');
-})
-
 
 // создаём переменые //тест формы для сохрпанения
 const formElement = document.querySelector('.popup__input');
@@ -62,9 +56,9 @@ const nameInput = document.querySelector('.popup__item_name');
 const jobInput = document.querySelector('.popup__item_occupation');
 // кнопка пременой для сохранение редактированого профиля
 const save = document.querySelector('.popup__button-save');
-
+// закрытие формы после сохранения изменений
 save.addEventListener('click', function() {
-  formElement.classList.remove('popup__button-save');
+  closePopup(popupPofile)
 })
 // fuction имя функции (параметры) {инструкции}
 function formProfil (evt) {
@@ -72,13 +66,16 @@ function formProfil (evt) {
   // соединяем popup c section profil для созранения изменений
   profileNameElement.textContent = nameInput.value;
   profileJobElement.textContent = jobInput.value;
-
-  popup.classList.toggle('popup_opened');
+  formElement.reset()
 
 }
   formElement.addEventListener('submit', formProfil);
 
 // 2 popup добавление карточки
+
+/* const popupPofile = document.querySelector('.popup_pofil');
+const popupEditProfile = document.querySelector('.profile__button-edit');
+const popupEditProfileClose = popupPofile.querySelector('.popup__close'); */
 
 const openPopupCard = document.querySelector('.profile__button-add');
 const popupCard = document.querySelector('.popup-card-nov');
@@ -123,7 +120,7 @@ const popupInputCard = document.querySelector('.popup__input_card');
 const popupItemCardName = document.querySelector('.popup__item-card-name');
 const popupItemCardOccupation = document.querySelector('.popup__item-card-occupation');
 // обшие переменые для функции добовления карточки
-function cardParametr(cards) {
+  function parametrCard(cards) {
 // template карточки
 const photoTemplate = document.querySelector('.item_template').content;
 const cardElement = photoTemplate.querySelector('.elements__item').cloneNode(true);
@@ -166,7 +163,7 @@ function deleteCardListeners(element) {
 return cardElement
 }
 function addCards(cardLos) {
-  const cards = cardParametr(cardLos);
+  const cards = parametrCard(cardLos);
   photoList.prepend(cards);
 }
 
