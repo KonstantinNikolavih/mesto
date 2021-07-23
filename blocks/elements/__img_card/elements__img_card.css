@@ -1,8 +1,6 @@
 .elements__img_card {
   max-width: 75vw;
   max-height: 75vh;
-  transition: all ,5s ease-in;
-  margin: 0 auto;
   object-fit: cover;
   display: block;
 }

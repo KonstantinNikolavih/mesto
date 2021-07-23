@@ -1,11 +1,13 @@
 .elements__title_card {
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
+  margin-top: 10px;
+  margin-bottom: 0;
   font-weight: 400;
   font-size: 12px;
   line-height: 15px;
   color: #fff;
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
+  /* overflow: hidden; */
 }

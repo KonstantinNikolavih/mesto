@@ -1,5 +1,4 @@
 .popup__card_width {
-  width: 75vw;
-  height: 75vh;
-  transition: all ,5s ease-in;
+  visibility: visible;
+  opacity: 1;
 }
