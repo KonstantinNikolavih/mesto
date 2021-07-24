@@ -95,11 +95,6 @@ const closePopupCardImg = popupCardImg.querySelector('.popup__close');
 // переменые popup card img // cart title
 const elementsTitleCard = document.querySelector('.elements__title_card');
 
-// открытие 3 popup с большой картинкой
-function openImgPol2(popupCard1) {
-  popupCard1.classList.add('popup_opened')
-}
-
 // закрытие 3 popup
 closePopupCardImg.addEventListener('click', function() {
   closePopup(popupCardImg)
@@ -128,7 +123,7 @@ elementsImg.addEventListener('click', function() {
   openPopupCardImg.src = elementsImg.src
   openPopupCardImg.alt = elementsTitl.textContent
   elementsTitleCard.textContent = elementsTitl.textContent
-  openImgPol2(popupCardImg)
+  openPopup(popupCardImg)
 
 });
 // вызов лайка
