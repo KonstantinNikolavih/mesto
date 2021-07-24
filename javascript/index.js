@@ -85,10 +85,6 @@ openPopupCard.addEventListener('click', function() {
 closePopupCard.addEventListener('click', function() {
   closePopup(popupCard)
 })
-// function закрытия popup добовление карточки
-function popupCardImgLink(popupCard) {
-  popupCard.classList.remove('popup_opened')
-}
 
 // переменые popup card img
 const elementList = document.querySelector('.elements__list');
@@ -170,7 +166,7 @@ popupInputCard.addEventListener('submit', function (evt) {
 })
 
   popupInputCard.reset()
-  popupCardImgLink(popupCard)
+  closePopup(popupCard)
 });
 // добовления карточек из массива
 const arrayCards = function() {
