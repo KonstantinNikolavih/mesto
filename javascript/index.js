@@ -86,6 +86,14 @@ closePopupCard.addEventListener('click', function() {
   closePopup(popupCard)
 })
 
+// закрытие popup за границей контейнера
+// наложить слушитель addEventListener
+popupPopupCard.addEventListener('click', function(event) {
+  if (event.target === event.currentTarget) {
+    popup.classList.toggle('popup_opened');
+  }
+ })
+
 // переменые popup card img
 const elementList = document.querySelector('.elements__list');
 /* const openImgP = document.querySelector('.popup_cards'); */
