@@ -71,6 +71,31 @@ function formProfil (evt) {
 }
   formElement.addEventListener('submit', formProfil);
 
+
+// закрытие popup за границей контейнера
+// наложить слушитель addEventListener
+   popupPofile.addEventListener('click', function() {
+    document.addEventListener('click', closePopupZon);
+  });
+  function closePopupZon (event) {
+    if(event.target.classList.contains('popup_opened')) {
+      document.querySelector('.popup_opened').classList.remove("popup_opened");
+    }
+  };
+
+
+//закрытие popup на кнопку esc
+  popupPofile.addEventListener("click", function() {
+    document.addEventListener('keydown', closePopupEsc);
+  });
+  function closePopupEsc (evt) {
+    if(evt.key === "Escape") {
+      document.querySelector(".popup_opened").classList.remove("popup_opened");
+    }
+  };
+
+
+
 // 2 popup добавление карточки
 const openPopupCard = document.querySelector('.profile__button-add');
 const popupCard = document.querySelector('.popup-card-nov');
@@ -86,13 +111,8 @@ closePopupCard.addEventListener('click', function() {
   closePopup(popupCard)
 })
 
-// закрытие popup за границей контейнера
-// наложить слушитель addEventListener
-popupPopupCard.addEventListener('click', function(event) {
-  if (event.target === event.currentTarget) {
-    popup.classList.toggle('popup_opened');
-  }
- })
+
+
 
 // переменые popup card img
 const elementList = document.querySelector('.elements__list');
