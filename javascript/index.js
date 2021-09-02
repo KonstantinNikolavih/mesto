@@ -204,7 +204,7 @@ arrayCards()
 const formProfilValit = document.querySelector('#formProfil');
 const firstname = document.querySelector('#firstname');
 const firstoccupation = document.querySelector('#firstoccupation');
-const submit = document.querySelector('#submitProfil');
+const submitProfil = document.querySelector('#submitProfil');
 // переменые формы карточки
 const formCardValit = document.querySelector('#formCard');
 const cardfirstname = document.querySelector('#cardfirstname');
@@ -212,7 +212,20 @@ const cardfirstoccupation = document.querySelector('#cardfirstoccupation');
 const submitCard = document.querySelector('#submitCard');
 
 
-/* submit.addEventListener('click', sendForm); */
+firstname.addEventListener('input', handleValedate);
+firstoccupation.addEventListener('input', handleValedate);
+
+cardfirstname.addEventListener('input', handleValedate);
+cardfirstoccupation.addEventListener('input', handleValedate);
+
+
+submitProfil.addEventListener('click', sendForm);
+
+function handleValedate(event) {
+  console.log(event)
+  isValid(event.target)
+}
+
 
 function activateError(element) {
   element.parentNode.classList.add('input-continer');
