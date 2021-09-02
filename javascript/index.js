@@ -197,3 +197,65 @@ const arrayCards = function() {
 }
 // вызов из массива
 arrayCards()
+
+
+//форма валидации
+// переменые формы профеля
+const formProfilValit = document.querySelector('#formProfil');
+const firstname = document.querySelector('#firstname');
+const firstoccupation = document.querySelector('#firstoccupation');
+const submit = document.querySelector('#submitProfil');
+// переменые формы карточки
+const formCardValit = document.querySelector('#formCard');
+const cardfirstname = document.querySelector('#cardfirstname');
+const cardfirstoccupation = document.querySelector('#cardfirstoccupation');
+const submitCard = document.querySelector('#submitCard');
+
+
+/* submit.addEventListener('click', sendForm); */
+
+function activateError(element) {
+  element.parentNode.classList.add('input-continer');
+}
+
+function resetError(element) {
+  element.parentNode.classList.remove('input-continer');
+  element.textContent = '';
+}
+
+function isValid(element) {
+  const errorElement = document.querySelector('#error-${element.id}');
+  resetError(errorElement);
+
+  if (!element.checkValidity()) {
+    errorElement.textContent = 'z - 0'/* element.validationMessage */;
+    acttionError(errorElement);
+    return false;
+  }
+    return true;
+}
+
+
+//обработка формы
+function sendForm(event) {
+  event.preventDefault();
+/* console.log(form.element); */
+  const inputs = Array.form(form.element);
+
+
+
+  let isValidForm = true;
+  inputs.forEach(() => {
+    if (elem.id !== submit.id) {
+      if (!isValid(elem)) isValidForm = false;
+    }
+  });
+
+      if (isValidForm) {
+        console.log ('sen');
+      } else {
+        console.log('---');
+      }
+
+
+}
