@@ -200,75 +200,122 @@ arrayCards()
 
 
 //форма валидации
-// переменые формы профеля
-const formProfilValit = document.querySelector('#formProfil');
+// Переменные
+const form = document.querySelector('#form');
 const firstname = document.querySelector('#firstname');
 const firstoccupation = document.querySelector('#firstoccupation');
-const submitProfil = document.querySelector('#submitProfil');
-// переменые формы карточки
-const formCardValit = document.querySelector('#formCard');
-const cardfirstname = document.querySelector('#cardfirstname');
-const cardfirstoccupation = document.querySelector('#cardfirstoccupation');
-const submitCard = document.querySelector('#submitCard');
+const submitProfil = document.querySelector('#edit__button');
+
+//profil форма
+firstname.addEventListener('input', handleValidate);
+firstoccupation.addEventListener('input', handleValidate);
 
 
-firstname.addEventListener('input', handleValedate);
-firstoccupation.addEventListener('input', handleValedate);
+submitProfil.addEventListener('click', sendForms);
 
-cardfirstname.addEventListener('input', handleValedate);
-cardfirstoccupation.addEventListener('input', handleValedate);
-
-
-submitProfil.addEventListener('click', sendForm);
-
-function handleValedate(event) {
-  console.log(event)
-  isValid(event.target)
+function handleValidate(event) {
+  isValid(event.target);
 }
-
 
 function activateError(element) {
-  element.parentNode.classList.add('input-continer');
+  element.parentNode.classList.add('popup__item_error_q');
 }
 
-function resetError(element) {
-  element.parentNode.classList.remove('input-continer');
+function resetError (element) {
+  element.parentNode.classList.remove('popup__item_error_q');
   element.textContent = '';
 }
 
+
 function isValid(element) {
-  const errorElement = document.querySelector('#error-${element.id}');
+  const errorElement = document.querySelector(`#error__${element.id}`);
   resetError(errorElement);
 
   if (!element.checkValidity()) {
-    errorElement.textContent = 'z - 0'/* element.validationMessage */;
-    acttionError(errorElement);
+    errorElement.textContent = element.validationMessage;
+    activateError(errorElement);
     return false;
   }
-    return true;
+
+  return true;
 }
 
-
-//обработка формы
-function sendForm(event) {
+function sendForms(event) {
   event.preventDefault();
-/* console.log(form.element); */
-  const inputs = Array.form(form.element);
 
-
+  const inputs = Array.from(form.elements);
 
   let isValidForm = true;
-  inputs.forEach(() => {
-    if (elem.id !== submit.id) {
+  inputs.forEach((elem) => {
+    if (elem.id !== submitProfil.id) {
       if (!isValid(elem)) isValidForm = false;
     }
   });
-
-      if (isValidForm) {
-        console.log ('sen');
-      } else {
-        console.log('---');
-      }
-
-
 }
+
+
+
+
+
+//форма валидации
+// Переменные card
+const formCard = document.querySelector('#formCard');
+const cardfirstname = document.querySelector('#cardfirstname');
+const cardfirstoccupation = document.querySelector('#cardfirstoccupation');
+const editButtonCard = document.querySelector('#edit__button-card');
+
+//card форма
+cardfirstname.addEventListener('input', handleValidate);
+cardfirstoccupation.addEventListener('input', handleValidate);
+
+
+editButtonCard.addEventListener('click', sendFormsCard);
+
+function handleValidate(event) {
+  isValid(event.target);
+}
+
+function activateError(element) {
+  element.parentNode.classList.add('popup__item_error_q');
+}
+
+function resetError (element) {
+  element.parentNode.classList.remove('popup__item_error_q');
+  element.textContent = '';
+}
+
+
+function isValid(element) {
+  const errorElement = document.querySelector(`#error__${element.id}`);
+  resetError(errorElement);
+
+  if (!element.checkValidity()) {
+    errorElement.textContent = element.validationMessage;
+    activateError(errorElement);
+    return false;
+  }
+
+  return true;
+}
+
+//проверка полей вода
+const hasInvalidInput = (inputList) => {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+  });
+}
+
+
+function sendFormsCard(event) {
+  event.preventDefault();
+
+  const inputs = Array.from(formCard.elements);
+
+  let isValidForm = true;
+  inputs.forEach((elem) => {
+    if (elem.id !== editButtonCard.id) {
+      if (!isValid(elem)) isValidForm = false;
+    }
+  });
+}
+

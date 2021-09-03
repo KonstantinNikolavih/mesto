@@ -1,0 +1,9 @@
+.popup__item_error_q .popup__item_error {
+  margin-top: 5px;
+  margin-left: 10px;
+  opacity: 1;
+}
+
+.popup__item_error_q .popup__item {
+  border-color: #FF3333;
+}
