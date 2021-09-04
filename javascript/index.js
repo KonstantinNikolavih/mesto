@@ -304,6 +304,33 @@ const hasInvalidInput = (inputList) => {
     return !inputElement.validity.valid;
   });
 }
+//не активная кнопка
+/////////////////////////////////////////////
+const toggleButtonState = (inputList, buttonElement) => {
+  if (hasInvalidInput(inputList)) {
+    buttonElement.classList.add('popup__button-save_disabled');
+    buttonElement.setAttribute('disabled', 'disabled');
+  } else {
+    buttonElement.classList.remove('popup__button-save_disabled');
+    buttonElement.removeAttribute('disabled', 'disabled');
+    console.log('toggleButtonState');
+    debugger;
+  }
+};
+
+
+const setEventListeners = (formElement) => {
+const inputList = Array.from(formElement.querySelectorAll(`.popup__item`));
+const buttonElement = formElement.querySelector('.popup__button-save');
+toggleButtonState(inputList, buttonElement);
+inputList.forEach((inputElement) => {
+  inputElement.addEventListener('input', () => {
+    isValid(formElement, inputElement);
+    toggleButtonState(inputList, buttonElement);
+  });
+});
+};
+///////////////////////////////////////
 
 
 function sendFormsCard(event) {
@@ -318,4 +345,3 @@ function sendFormsCard(event) {
     }
   });
 }
-
