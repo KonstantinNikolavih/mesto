@@ -66,7 +66,7 @@ function formProfil (evt) {
   // соединяем popup c section profil для созранения изменений
   profileNameElement.textContent = nameInput.value;
   profileJobElement.textContent = jobInput.value;
-  formElement.reset()
+  /* formElement.reset() */
 
 }
   formElement.addEventListener('submit', formProfil);
@@ -116,7 +116,7 @@ closePopupCard.addEventListener('click', function() {
 
 // переменые popup card img
 const elementList = document.querySelector('.elements__list');
-/* const openImgP = document.querySelector('.popup_cards'); */
+
 const openPopupCardImg = document.querySelector('.elements__img_card');
 const popupCardImg = document.querySelector('.popup__card_img');
 const closePopupCardImg = popupCardImg.querySelector('.popup__close');
@@ -198,150 +198,71 @@ const arrayCards = function() {
 // вызов из массива
 arrayCards()
 
-
 //форма валидации
-// Переменные
-const form = document.querySelector('#form');
-const firstname = document.querySelector('#firstname');
-const firstoccupation = document.querySelector('#firstoccupation');
-const submitProfil = document.querySelector('#edit__button');
-
-//profil форма
-firstname.addEventListener('input', handleValidate);
-firstoccupation.addEventListener('input', handleValidate);
-
-
-submitProfil.addEventListener('click', sendForms);
-
-function handleValidate(event) {
-  isValid(event.target);
+ function enableValidation () {
+  const form = document.querySelector('.popup__input');
+  form.addEventListener('submit', handleFormSubmit);
+  form.addEventListener('input', handleFormInput);
 }
-
-function activateError(element) {
-  element.parentNode.classList.add('popup__item_error_q');
-}
-
-function resetError (element) {
-  element.parentNode.classList.remove('popup__item_error_q');
-  element.textContent = '';
-}
-
-
-function isValid(element) {
-  const errorElement = document.querySelector(`#error__${element.id}`);
-  resetError(errorElement);
-
-  if (!element.checkValidity()) {
-    errorElement.textContent = element.validationMessage;
-    activateError(errorElement);
-    return false;
-  }
-
-  return true;
-}
-
-function sendForms(event) {
+function handleFormSubmit(event) {
   event.preventDefault();
 
-  const inputs = Array.from(form.elements);
+  const form = event.currentTarget;
+   const isValid = form.checkValidity();
 
-  let isValidForm = true;
-  inputs.forEach((elem) => {
-    if (elem.id !== submitProfil.id) {
-      if (!isValid(elem)) isValidForm = false;
-    }
-  });
-}
-
-
-
-
-
-//форма валидации
-// Переменные card
-const formCard = document.querySelector('#formCard');
-const cardfirstname = document.querySelector('#cardfirstname');
-const cardfirstoccupation = document.querySelector('#cardfirstoccupation');
-const editButtonCard = document.querySelector('#edit__button-card');
-
-//card форма
-cardfirstname.addEventListener('input', handleValidate);
-cardfirstoccupation.addEventListener('input', handleValidate);
-
-
-editButtonCard.addEventListener('click', sendFormsCard);
-
-function handleValidate(event) {
-  isValid(event.target);
-}
-
-function activateError(element) {
-  element.parentNode.classList.add('popup__item_error_q');
-}
-
-function resetError (element) {
-  element.parentNode.classList.remove('popup__item_error_q');
-  element.textContent = '';
-}
-
-
-function isValid(element) {
-  const errorElement = document.querySelector(`#error__${element.id}`);
-  resetError(errorElement);
-
-  if (!element.checkValidity()) {
-    errorElement.textContent = element.validationMessage;
-    activateError(errorElement);
-    return false;
-  }
-
-  return true;
-}
-
-//проверка полей вода
-const hasInvalidInput = (inputList) => {
-  return inputList.some((inputElement) => {
-    return !inputElement.validity.valid;
-  });
-}
-//не активная кнопка
-/////////////////////////////////////////////
-const toggleButtonState = (inputList, buttonElement) => {
-  if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add('popup__button-save_disabled');
-    buttonElement.setAttribute('disabled', 'disabled');
+  if (isValid) {
+    /* form.reset(); */
   } else {
-    buttonElement.classList.remove('popup__button-save_disabled');
-    buttonElement.removeAttribute('disabled', 'disabled');
-    console.log('toggleButtonState');
-    debugger;
+   /*  form.reset(); */
   }
-};
+  }
 
 
-const setEventListeners = (formElement) => {
-const inputList = Array.from(formElement.querySelectorAll(`.popup__item`));
-const buttonElement = formElement.querySelector('.popup__button-save');
-toggleButtonState(inputList, buttonElement);
-inputList.forEach((inputElement) => {
-  inputElement.addEventListener('input', () => {
-    isValid(formElement, inputElement);
-    toggleButtonState(inputList, buttonElement);
-  });
-});
-};
-///////////////////////////////////////
+function handleFormInput (event) {
+  const input = event.target;
+  const form = event.currentTarget;
 
-
-function sendFormsCard(event) {
-  event.preventDefault();
-
-  const inputs = Array.from(formCard.elements);
-
-  let isValidForm = true;
-  inputs.forEach((elem) => {
-    if (elem.id !== editButtonCard.id) {
-      if (!isValid(elem)) isValidForm = false;
-    }
-  });
+  setCustomError(input);
+  setFieldError(input)
+  setSubmitButtonState(form)
 }
+
+// Найдём невалидные поля и установим ис тексты ошибок
+function setCustomError(input) {
+  const validity = input.validity;
+  input.setCustomValidity("");
+
+  if (validity.tooShort || validity.tooLong) {
+     const currentLength = input.value.length;
+     const min = input.getAttribute("minlength");
+     const max = input.getAttribute("maxlength");
+    input.setCustomValidity(
+       `Вы пропустили это поле. Введено ${currentLength}, а должно быть от ${min} до ${max}`
+    );
+  }
+  if (validity.typeMismatch) {
+    input.setCustomValidity('Ведите адрес сайта');
+  }
+}
+// Показываем тексты ошибок пользователям
+function setFieldError(input) {
+  const span = document.querySelector(`#error__${input.id}`);
+  span.textContent = input.validationMessage;
+}
+// Активируем или деактивируем кнопку
+function setSubmitButtonState(form) {
+  const button = form.querySelector('.popup__button-save');
+  const isValid = form.checkValidity();
+
+if (isValid) {
+  button.classList.add('popup__button-save_disabled');
+  button.classList.remove('popup__button-save_active');
+  button.removeAttribute('disabled');
+} else {
+  button.classList.remove('popup__button-save_disabled');
+  button.classList.add('popup__button-save_active');
+  button.setAttribute('disabled', 'disabled');
+}
+}
+
+enableValidation();
