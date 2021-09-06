@@ -203,6 +203,10 @@ arrayCards()
   const form = document.querySelector('.popup__input');
   form.addEventListener('submit', handleFormSubmit);
   form.addEventListener('input', handleFormInput);
+
+  const formCard = document.querySelector('.popup__input_card');
+  formCard.addEventListener('submit', handleFormSubmit);
+  formCard.addEventListener('input', handleFormInput);
 }
 function handleFormSubmit(event) {
   event.preventDefault();
@@ -251,6 +255,7 @@ function setFieldError(input) {
 }
 // Активируем или деактивируем кнопку
 function setSubmitButtonState(form) {
+
   const button = form.querySelector('.popup__button-save');
   const isValid = form.checkValidity();
 
@@ -262,7 +267,7 @@ if (isValid) {
   button.classList.remove('popup__button-save_disabled');
   button.classList.add('popup__button-save_active');
   button.setAttribute('disabled', 'disabled');
-}
+  }
 }
 
 enableValidation();
