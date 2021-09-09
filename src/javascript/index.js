@@ -1,3 +1,9 @@
+
+
+// index.js
+
+import '../page/index.css'; // добавьте импорт главного файла стилей
+
 // 1 popup profile
 // создаём переменые
 const popupPofile = document.querySelector('.popup_pofil');
